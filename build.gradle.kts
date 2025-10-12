@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.2.20"
+    application
 }
 
 group = "com.ochoscar"
@@ -18,4 +19,8 @@ tasks.test {
 }
 kotlin {
     jvmToolchain(22)
+}
+
+application {
+    mainClass.set("com.ochoscar.MainKt")
 }
