@@ -15,12 +15,16 @@ fun <A> isSorted(aa: List<A>, order: (A, A) -> Boolean): Boolean {
         }).second
 }
 
+fun <A> isSorted2(aa: List<A>, order: (A, A) -> Boolean): Boolean {
+    return aa.zipWithNext().all { (a, b) -> order(a, b) }
+}
+
 fun main() {
     val data1 = listOf<String>("abc3", "abc2", "abc4", "abc5", "abc1")
     val data2 = listOf<String>("abc1", "abc2", "abc3", "abc4", "abc5")
     fun <A: Comparable<A>> order(item1: A, item2: A): Boolean =  item1 < item2
-    val sorted1 = isSorted<String>(data1, ::order)
-    val sorted2 = isSorted<String>(data2, ::order)
+    val sorted1 = isSorted2<String>(data1, ::order)
+    val sorted2 = isSorted2<String>(data2, ::order)
     println("Data 1 is sorted: $sorted1")
     println("Data 2 is sorted: $sorted2")
 }
