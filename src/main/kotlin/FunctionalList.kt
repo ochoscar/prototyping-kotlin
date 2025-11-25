@@ -24,6 +24,25 @@ sealed class MyList<out A> {
                 is Cons -> Cons(x, xs)
             }
         }
+
+        tailrec fun <A> drop(l: MyList<A>, n: Int): MyList<A> {
+            return if(n == 0) l
+            else drop(tail(l), n - 1)
+        }
+
+        tailrec fun <A> dropWhile(l: MyList<A>, f: (A) -> Boolean): MyList<A> {
+            return when(l) {
+                is Nil -> Nil
+                is Cons -> if(f(l.head)) dropWhile(tail(l), f) else l
+            }
+        }
+
+        fun <A> init(l: MyList<A>): MyList<A> {
+            return when(l) {
+                is Nil -> Nil
+                is Cons -> if(l.tail != Nil) Cons(l.head, init(l.tail)) else l
+            }
+        }
     }
 
 }
