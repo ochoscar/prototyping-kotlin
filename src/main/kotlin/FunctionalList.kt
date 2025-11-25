@@ -7,7 +7,7 @@ sealed class MyList<out A> {
 
     companion object {
         fun <A> of(vararg aa: A): MyList<A> {
-            val tail = (aa as Array).sliceArray(1 until aa.size)
+            val tail = aa.sliceArray(1 until aa.size)
             return if (aa.isEmpty()) Nil else Cons(aa[0], of(*tail))
         }
 
@@ -15,6 +15,13 @@ sealed class MyList<out A> {
             return when(xs) {
                 is Nil -> Nil
                 is Cons -> xs.tail
+            }
+        }
+
+        fun <A> setHead(xs: MyList<A>, x: A): MyList<A> {
+            return when(xs) {
+                is Nil -> Cons(x, Nil)
+                is Cons -> Cons(x, xs)
             }
         }
     }
