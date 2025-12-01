@@ -44,10 +44,18 @@ sealed class MyList<out A> {
             }
         }
 
-        fun <A, B> foldRigth(l: MyList<A>, z: B, f: (A, B) -> B): B {
+        fun <A, B> foldRight(l: MyList<A>, z: B, f: (A, B) -> B): B {
             return when(l) {
                 is Nil -> z
-                is Cons -> f(l.head, foldRigth(l.tail, z, f))
+                is Cons -> f(l.head, foldRight(l.tail, z, f))
+            }
+        }
+
+        fun <A, B> foldRightWithStop(l: MyList<A>, z: B, f: (A, B) -> B, sF: (A) -> Boolean, sV: B): B {
+            return when {
+                l is Nil -> z
+                sF((l as Cons).head) -> sV
+                else -> f((l as Cons).head, foldRightWithStop(l.tail, z, f, sF, sV))
             }
         }
     }

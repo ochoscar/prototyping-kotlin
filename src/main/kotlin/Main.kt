@@ -1,15 +1,17 @@
 package com.ochoscar
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
     println("Hello Kotlin!")
 
     val list = MyList.of(1, 2, 3, 4, 5)
-    val sum = MyList.foldRigth(list, 0, { a, b -> a + b})
+    val sum = MyList.foldRight(list, 0, { a, b -> a + b})
     println("sum: $sum")
-    val product = MyList.foldRigth(list, 1, { a, b -> a * b})
+    val product = MyList.foldRight(list, 1, { a, b -> a * b})
     println("product: $product")
+
+    val list2 = MyList.of(1, 2, 3, 4, 5, 0, 7, 8, 9)
+    val product2 = MyList.foldRightWithStop(list2, 1, { a, b -> a * b}, { a -> a ==0 }, 0)
+    println("product2: $product2")
 }
 
 fun greetings(name: String): String {
