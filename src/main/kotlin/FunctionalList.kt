@@ -43,6 +43,13 @@ sealed class MyList<out A> {
                 is Cons -> if(l.tail != Nil) Cons(l.head, init(l.tail)) else l
             }
         }
+
+        fun <A, B> foldRigth(l: MyList<A>, z: B, f: (A, B) -> B): B {
+            return when(l) {
+                is Nil -> z
+                is Cons -> f(l.head, foldRigth(l.tail, z, f))
+            }
+        }
     }
 
 }
