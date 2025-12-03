@@ -58,6 +58,12 @@ sealed class MyList<out A> {
                 else -> f((l as Cons).head, foldRightWithStop(l.tail, z, f, sF, sV))
             }
         }
+
+        fun <A> empty(): MyList<A> = Nil
+
+        fun <A> lenght(l: MyList<A>): Int {
+            return foldRight(l, 0) { _, acc -> acc + 1}
+        }
     }
 
 }

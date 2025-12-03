@@ -12,6 +12,8 @@ fun main() {
     val list2 = MyList.of(1, 2, 3, 4, 5, 0, 7, 8, 9)
     val product2 = MyList.foldRightWithStop(list2, 1, { a, b -> a * b}, { a -> a ==0 }, 0)
     println("product2: $product2")
+
+    println("List size: ${MyList.lenght(list2)}")
 }
 
 fun greetings(name: String): String {
