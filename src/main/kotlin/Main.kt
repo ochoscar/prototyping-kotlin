@@ -13,7 +13,7 @@ fun main() {
     val product2 = MyList.foldRightWithStop(list2, 1, { a, b -> a * b}, { a -> a ==0 }, 0)
     println("product2: $product2")
 
-    println("List size: ${MyList.lenght(list2)}")
+    println("List size: ${MyList.length(list2)}")
 }
 
 fun greetings(name: String): String {
