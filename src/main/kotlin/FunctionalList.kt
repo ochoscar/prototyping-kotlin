@@ -64,6 +64,13 @@ sealed class MyList<out A> {
         fun <A> length(l: MyList<A>): Int {
             return foldRight(l, 0) { _, acc -> acc + 1 }
         }
+
+        tailrec fun <A, B> foldLeft(xs: MyList<A>, z: B, f: (B, A) -> B): B {
+            return when(xs) {
+                is Nil -> z
+                is Cons -> foldLeft(xs.tail, f(z, xs.head), f)
+            }
+        }
     }
 
 }

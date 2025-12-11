@@ -14,6 +14,9 @@ fun main() {
     println("product2: $product2")
 
     println("List size: ${MyList.length(list2)}")
+
+    val product3 = MyList.foldLeft(list, 1, { a, b -> a * b})
+    println("product3: $product3")
 }
 
 fun greetings(name: String): String {
