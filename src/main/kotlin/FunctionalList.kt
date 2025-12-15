@@ -71,6 +71,39 @@ sealed class MyList<out A> {
                 is Cons -> foldLeft(xs.tail, f(z, xs.head), f)
             }
         }
+
+        fun <A> reverseRecursive(xs: MyList<A>): MyList<A> {
+            fun reverse(list: MyList<A>): MyList<A> {
+                return when(list) {
+                    is Nil -> Nil
+                    is Cons -> addAtLast(reverse(list.tail), list.head)
+                }
+            }
+            return reverse(xs)
+        }
+
+        /*fun <A> reverseWithFold(xs: MyList<A>): MyList<A> {
+
+        }*/
+
+        fun <A> addAtLast(xs: MyList<A>, item: A): MyList<A> {
+            return when(xs) {
+                is Nil -> Cons(item, Nil)
+                is Cons -> Cons(xs.head, addAtLast(xs.tail, item))
+            }
+        }
+
+        fun <A> printList(xs: MyList<A>): Unit {
+            when(xs) {
+                is Nil -> println("")
+                is Cons -> {
+                    print(" ${xs.head}")
+                    printList(xs.tail)
+                }
+            }
+        }
+
+
     }
 
 }
