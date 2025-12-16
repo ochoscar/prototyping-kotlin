@@ -83,7 +83,7 @@ sealed class MyList<out A> {
         }
 
         fun <A> reverseWithFold(xs: MyList<A>): MyList<A> {
-            return xs
+            return foldRight(xs, Nil) { item: A, acc: MyList<A> -> Cons(item, acc) }
         }
 
         fun <A> addAtLast(xs: MyList<A>, item: A): MyList<A> {

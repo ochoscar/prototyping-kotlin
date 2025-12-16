@@ -18,8 +18,11 @@ fun main() {
     val product3 = MyList.foldLeft(list, 1, { a, b -> a * b})
     println("product3: $product3")
 
-    val reversed = MyList.reverseRecursive(list2)
-    MyList.printList(reversed)
+    val reversed1 = MyList.reverseRecursive(list2)
+    MyList.printList(reversed1)
+
+    val reversed2 = MyList.reverseRecursive(list2)
+    MyList.printList(reversed2)
 }
 
 fun greetings(name: String): String {
