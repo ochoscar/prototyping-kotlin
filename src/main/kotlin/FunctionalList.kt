@@ -82,9 +82,9 @@ sealed class MyList<out A> {
             return reverse(xs)
         }
 
-        /*fun <A> reverseWithFold(xs: MyList<A>): MyList<A> {
-
-        }*/
+        fun <A> reverseWithFold(xs: MyList<A>): MyList<A> {
+            return xs
+        }
 
         fun <A> addAtLast(xs: MyList<A>, item: A): MyList<A> {
             return when(xs) {
@@ -102,7 +102,6 @@ sealed class MyList<out A> {
                 }
             }
         }
-
 
     }
 
