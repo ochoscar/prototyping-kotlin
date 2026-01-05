@@ -128,6 +128,17 @@ sealed class MyList<out A> {
             return createList(xb, xa)
         }
 
+        // Add 1 to an integer list
+        fun add1(xs: MyList<Int>): MyList<Int> {
+            fun go(items: MyList<Int>): MyList<Int> {
+                return when (items) {
+                    is Nil -> Nil
+                    is Cons -> Cons(items.head + 1, go(items.tail))
+                }
+            }
+            return go(xs)
+        }
+
     }
 
 }

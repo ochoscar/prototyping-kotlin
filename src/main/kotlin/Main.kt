@@ -33,6 +33,9 @@ fun main() {
 
     val concatenatedList = MyList.concatenate(list2, list2)
     MyList.printList(concatenatedList)
+
+    val added1 = MyList.add1(list)
+    MyList.printList(added1)
 }
 
 fun greetings(name: String): String {
