@@ -26,6 +26,10 @@ fun main() {
 
     val reversed2 = MyList.reverseRecursive(list2)
     MyList.printList(reversed2)
+
+    val listAppend = MyList.of(1, 2, 3, 4, 5, 0, 7, 8, 9)
+    val listAppended = MyList.appendWithFold(listAppend, 5)
+    MyList.printList(listAppended)
 }
 
 fun greetings(name: String): String {

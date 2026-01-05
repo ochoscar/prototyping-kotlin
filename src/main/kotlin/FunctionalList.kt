@@ -110,6 +110,13 @@ sealed class MyList<out A> {
             }
         }
 
+        // Append with fold
+        fun <A> appendWithFold(xs: MyList<A>, lastItem: A): MyList<A> {
+            return foldLeft(xs, Cons(lastItem, Nil)) { acc: MyList<A>, item: A ->
+                Cons(item, acc)
+            }
+        }
+
     }
 
 }
