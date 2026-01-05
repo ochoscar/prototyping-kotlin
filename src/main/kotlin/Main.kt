@@ -36,6 +36,10 @@ fun main() {
 
     val added1 = MyList.add1(list)
     MyList.printList(added1)
+
+    val mapTest = MyList.map<Int, Int>(list,{item -> item * 2} )
+    val mapTest2 = MyList.map<Int, Int>(list, { it * 2 } )
+    MyList.printList(mapTest2)
 }
 
 fun greetings(name: String): String {

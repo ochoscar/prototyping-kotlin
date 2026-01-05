@@ -139,6 +139,14 @@ sealed class MyList<out A> {
             return go(xs)
         }
 
+        // Map function
+        fun <A, B> map(xs: MyList<A>, f: (A) -> B): MyList<B> {
+            return when(xs) {
+                is Nil -> Nil
+                is Cons -> Cons(f(xs.head), map(xs.tail, f))
+            }
+        }
+
     }
 
 }
