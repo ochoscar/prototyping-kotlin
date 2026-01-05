@@ -40,6 +40,9 @@ fun main() {
     val mapTest = MyList.map<Int, Int>(list,{item -> item * 2} )
     val mapTest2 = MyList.map<Int, Int>(list, { it * 2 } )
     MyList.printList(mapTest2)
+
+    val filterTest = MyList.filter(list2, { it % 2 == 0})
+    MyList.printList(filterTest)
 }
 
 fun greetings(name: String): String {

@@ -147,6 +147,17 @@ sealed class MyList<out A> {
             }
         }
 
+        // Filter function
+        fun <A> filter(xs: MyList<A>, f: (A) -> Boolean): MyList<A> {
+            return when(xs) {
+                is Nil -> Nil
+                is Cons -> if(f(xs.head))
+                                Cons(xs.head, filter(xs.tail, f))
+                            else
+                                filter(xs.tail, f)
+            }
+        }
+
     }
 
 }
