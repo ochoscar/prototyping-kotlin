@@ -117,6 +117,17 @@ sealed class MyList<out A> {
             }
         }
 
+        // Concatenate list
+        fun <A> concatenate(xa: MyList<A>, xb: MyList<A>): MyList<A> {
+            fun createList(xb: MyList<A>, xConcatenated: MyList<A> ): MyList<A> {
+                return when(xb) {
+                    is Nil -> xConcatenated
+                    is Cons -> Cons(xb.head, createList(xb.tail, xConcatenated))
+                }
+            }
+            return createList(xb, xa)
+        }
+
     }
 
 }
