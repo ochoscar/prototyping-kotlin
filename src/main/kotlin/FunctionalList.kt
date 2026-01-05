@@ -72,6 +72,7 @@ sealed class MyList<out A> {
             }
         }
 
+        // Reverse items
         fun <A> reverseRecursive(xs: MyList<A>): MyList<A> {
             fun reverse(list: MyList<A>): MyList<A> {
                 return when(list) {
@@ -92,6 +93,12 @@ sealed class MyList<out A> {
                 is Cons -> Cons(xs.head, addAtLast(xs.tail, item))
             }
         }
+
+        // Implemented foldLeft in terms of foldRight
+        fun <A, B> foldLeft2(xs: MyList<A>, z: B, f: (A, B) -> B): B =
+            foldRight(xs, { b: B -> b }) { a, g ->
+                { b -> g(f(b as A, a as B)) }
+            }(z)
 
         fun <A> printList(xs: MyList<A>): Unit {
             when(xs) {
