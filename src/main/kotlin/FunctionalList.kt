@@ -158,6 +158,14 @@ sealed class MyList<out A> {
             }
         }
 
+        // Flat map flatMap(List.of(1,2,3), {i -> List.of(i, i)}) -> List(1,1,2,2,3,3,)
+        fun<A, B> flatMap(xs: MyList<A>, f: (A) -> MyList<B>): MyList<B> {
+            return when(xs) {
+                is Nil -> Nil
+                is Cons -> concatenate( flatMap(xs.tail, f), f(xs.head))
+            }
+        }
+
     }
 
 }

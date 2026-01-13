@@ -43,6 +43,9 @@ fun main() {
 
     val filterTest = MyList.filter(list2, { it % 2 == 0})
     MyList.printList(filterTest)
+
+    val flatMap = MyList.flatMap(MyList.of(1,2,3), { i -> MyList.of(i, i) })
+    MyList.printList(flatMap)
 }
 
 fun greetings(name: String): String {
