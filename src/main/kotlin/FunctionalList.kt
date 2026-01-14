@@ -166,6 +166,25 @@ sealed class MyList<out A> {
             }
         }
 
+        tailrec fun <A> hasSubsequence(xs: MyList<A>, sub: MyList<A>): Boolean =
+            when (xs) {
+                is Nil -> sub is Nil
+                is Cons ->
+                    if (startsWith(xs, sub)) true
+                    else hasSubsequence(xs.tail, sub)
+            }
+
+        tailrec fun <A> startsWith(xs: MyList<A>, sub: MyList<A>): Boolean =
+            when (sub) {
+                is Nil -> true
+                is Cons ->
+                    when (xs) {
+                        is Cons ->
+                            xs.head == sub.head && startsWith(xs.tail, sub.tail)
+                        is Nil -> false
+                    }
+            }
+
     }
 
 }
